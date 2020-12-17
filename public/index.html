@@ -11,9 +11,17 @@
     <script src="socket.io/socket.io.js"> </script>
 
     <script>
+        /*Como definí este socket de manera global para 
+        todo el index.html, yo tengo acceso a todo esto
+        desde la terminal de google chrome*/
         var socket=io();
         socket.on('connect',function(){
             console.log('conectado al servidor')
+        });
+        socket.on('active-bands',function(payload){
+            console.clear;
+            console.clear;
+            console.table(payload);
         });
 
         socket.on('disconnect',function(){
@@ -26,6 +34,11 @@
         socket.on('mensaje', function(payload){
             console.log('Escuchando:', payload);
         })
+
+        socket.on('nuevo-mensaje', function(payload){
+            
+            console.log('Escuchando: ',payload);
+        });
 
     </script>
     
